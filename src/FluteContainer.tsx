@@ -1,52 +1,18 @@
 import React, { useState } from "react";
-import map from "lodash/map";
-import TagsInput from "react-tagsinput";
-import 'react-tagsinput/react-tagsinput.css'
+import TaggedInput from "./TaggedInput";
 
-import Notes from "./Notes";
-
-const KeyCodes = {
-  comma: 188,
-  enter: 13
-};
-
-const delimiters = [KeyCodes.comma, KeyCodes.enter];
-
-const isNote = (text: string) => /[abcdefg][#b]/g.test(text);
-
-interface Note {
-  id: number;
-  name: string;
-}
+// import Notes from "./Notes";
 
 const FluteContainer = () => {
   const [notes, setNotes] = useState([] as Note[]);
 
-  const handleDelete = (i: number) => {
-    setNotes(notes.filter((_, index) => index !== i));
-  };
-
-  const handleAddition = (note: Note) => {
-    if (isNote(note.name)) setNotes([...notes, note]);
-  };
-
-  const handleChange = (notes: Note[]) => {
-    setState({notes})
-  }
-
-  const handleDrag = (note: Note, from: number, to: number) => {
-    const newNotes = notes.slice();
-    newNotes.splice(from, 1);
-    newNotes.splice(to, 0, note);
+  const handleChange = (newNotes: Note[]) => {
     setNotes(newNotes);
   };
 
-  return (
-    <div>
-      kjhfgk
-      <TagsInput value={notes} onChange={handleChange} />
-    </div>
-  );
+  // const noteReg = /[ABCDEFG][#b]?[4567]/g
+
+  return <TaggedInput value={notes} onChange={handleChange} />;
 };
 
 export default FluteContainer;
