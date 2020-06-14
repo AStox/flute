@@ -46,6 +46,11 @@ const TaggedInput = ({
             <div className="note" key={note.name}>
               <div className="note-name">{note.name}</div>
               <img
+                className="sheet"
+                src={fingerings[`s_${note.name}.png`]}
+                alt={note.name}
+              />
+              <img
                 className="fingering"
                 src={fingerings[`f_${note.name}.png`]}
                 alt={note.name}
