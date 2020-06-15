@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import map from "lodash/map";
 import includes from "lodash/includes";
+import partial from "lodash/partial";
+
+import Title from "./Title";
+
 import "./TaggedInput.sass";
 
 function importAll(r) {
@@ -49,7 +53,11 @@ const TaggedInput = ({
     onChange(newValue);
   };
 
-  console.log("TaggedInput", value);
+  const updateTitle = (index: number, name: string) => {
+    value.splice(index, 1, { name });
+    const newValues = [...value];
+    onChange(newValues);
+  };
 
   return (
     <span className="TaggedInput">
@@ -57,7 +65,11 @@ const TaggedInput = ({
         {map(value, (note: Note, index: number) => {
           return (
             <div className="note" key={note.name}>
-              <div className="note-name">{note.name}</div>
+              <Title
+                editable
+                value={note.name}
+                onUpdate={partial(updateTitle, index)}
+              />
               <img
                 className="sheet"
                 src={fingerings[`s_${note.name}.png`]}
@@ -73,6 +85,7 @@ const TaggedInput = ({
           );
         })}
         <input
+          className="main-input"
           type="text"
           value={inputState}
           onChange={handleChange}

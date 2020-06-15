@@ -5,12 +5,10 @@ import Main from "./Main";
 import ToDo from "./ToDo";
 import FluteContainer from "./FluteContainer";
 
-
-import './App.sass'
+import "./App.sass";
 
 const App = () => {
-
-  const toDoItems = ["build", "destroy"];
+  const toDoItems = ["Edit a note", "Add new line"];
 
   return (
     <Router>
