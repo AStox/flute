@@ -8,7 +8,7 @@ import FluteContainer from "./FluteContainer";
 import "./App.sass";
 
 const App = () => {
-  const toDoItems = ["Edit a note", "Add new line"];
+  const toDoItems = ["Add neomorphism", "Add new line"];
 
   return (
     <Router>

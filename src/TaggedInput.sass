@@ -1,28 +1,67 @@
+@import 'variables'
+$size1: -10px
+$size2: 10px
+$spread: 30px
+$spread2: -30px
+
+@keyframes fadein
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
 .TaggedInput
-    width: 100%
+    // padding: 2rem
     font-size: 1.5rem
-    background: #F0F0F3
+    border-radius: 2rem
+    box-shadow-bottom: inset $size2 $size2 $size2 0 rgba(255,255,255,0.5),
+
+    //inset $size1 $size1 $size2 0 rgba(174,174,192,0.2)
 
     .notes
-        background: #F0F0F3
         display: flex
         flex-wrap: wrap
         justify-content: space-between
-        border-bottom: solid 0.1rem gray
-
-    .note
-        flex: 1
-        // border: outset 0.2rem #f4f4f4
-        border-radius: 3rem
-        padding: 1rem
-        margin: 0.1rem
-        text-align: center
-        max-width: 3rem
-        background-color: #FFFFFF
-
-    .main-input
-        background: #F0F0F3
         border: 0
-        font-size: inherit
-        min-width: 0
+        margin-bottom: 2rem
+
+    .note-container
+        transition: width
         flex: 1
+        max-width: 5rem
+        padding: 1rem
+
+        .note
+            animation: fadein 0.3s
+            background: $background
+            border-radius: 3rem
+            padding: 1rem
+            margin: 0.1rem
+            text-align: center
+            box-shadow: $size2 $size2 $spread 0 $light, $size1 $size1 $spread 0 $shadow
+
+    .input-container
+        flex: 1
+        .main-input
+            background: transparent
+            border: 0
+            font-size: 5rem
+            min-width: 0
+            width: 100%
+            height: 100%
+
+            &::placeholder
+                color: $shadow
+
+    .close-button
+        font-color: black
+        border-radius: 10rem
+        border: 0
+        box-shadow: -2px -2px 5px 0 $shadow, 2px 2px 5px 0 $light
+
+    .staff
+        height: 8px
+        margin: 0 5rem
+        box-shadow: -5px -5px 10px 0 $light, 5px 5px 10px 0 $shadow
+        border-radius: 1rem
+        background: rgba(174,174,192,0.05)

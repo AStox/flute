@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import includes from "lodash/includes";
+import classNames from "classnames";
 
 import "./Title.sass";
 
@@ -10,7 +11,7 @@ const Title = ({
 }: {
   value: string;
   onUpdate(name: string): void;
-  saved: booleans;
+  saved: boolean;
 }) => {
   const [inputValue, setInputValue] = useState(value);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +27,7 @@ const Title = ({
   return (
     <div className="Title">
       <input
-        className="note-input"
+        className={"note-input" + classNames({ saved })}
         type="text"
         value={inputValue}
         onChange={handleChange}
