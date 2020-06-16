@@ -117,7 +117,7 @@ const TaggedInput = ({
                 value={inputState}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
-                placeholder="Type a note"
+                placeholder={bar.length > 0 ? "" : "Type a note"}
               />
             </div>
           </div>
